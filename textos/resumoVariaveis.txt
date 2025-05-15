@@ -1,0 +1,107 @@
+Resumo da Seção - Variáveis
+Variáveis em Node.js
+As variáveis são um dos conceitos mais básicos e importantes na programação. Elas funcionam como "caixinhas" na memória do computador onde você pode guardar informações para usar mais tarde. Imagine que você está cozinhando e precisa guardar ingredientes em potes rotulados para saber o que usar em cada etapa da receita. Cada pote tem um rótulo (nome da variável) e um conteúdo (valor armazenado).
+
+Como as variáveis funcionam?
+Espaço na Memória: Quando você cria uma variável, o computador reserva um espaço na memória para armazenar o valor que você quiser (por exemplo, um número, texto ou outro tipo de dado).
+
+Nome da Variável: Cada variável tem um nome que é usado para acessá-la. Esse nome é escolhido por você, mas existem regras para garantir que o nome seja válido no JavaScript (e no Node.js, que usa JavaScript no backend).
+
+Criando Variáveis
+No Node.js (e em JavaScript), você pode criar variáveis usando três palavras-chave principais: var, let, e const. Abaixo explicamos a diferença entre elas.
+
+Palavras-chave para criar variáveis em JavaScript
+1. var
+var foi a primeira forma de criar variáveis em JavaScript, mas hoje em dia é menos recomendada, pois tem algumas características que podem causar confusão, principalmente para quem está começando.
+
+Uma variável criada com var é global ou local, dependendo de onde foi declarada. Isso significa que ela pode "escapar" do bloco de código onde foi criada, o que pode causar bugs inesperados.
+
+Exemplo:
+
+var nome = "João";
+console.log(nome); // João
+Se você usar var dentro de um bloco, como um if, ela ainda poderá ser acessada de fora desse bloco. Isso pode ser confuso, porque esperamos que variáveis só existam dentro do lugar onde foram criadas.
+
+Exemplo:
+
+if (true) {
+  var idade = 25;
+}
+console.log(idade); // 25, mesmo fora do bloco if
+2. let
+A palavra-chave let foi introduzida em versões mais recentes do JavaScript para substituir var em muitos casos, e resolve o problema de "escapamento" de variáveis. Com let, uma variável só existe dentro do bloco de código onde foi criada.
+
+Exemplo:
+
+let nome = "Maria";
+console.log(nome); // Maria
+Quando você usa let dentro de um bloco de código (como um if ou for), essa variável não pode ser acessada de fora desse bloco. Isso evita erros e torna o código mais previsível.
+
+Exemplo:
+
+if (true) {
+  let idade = 30;
+}
+console.log(idade); // Erro! idade não está definida fora do if
+3. const
+const funciona de maneira semelhante ao let, mas com uma diferença importante: o valor da variável não pode ser alterado depois que ela é definida. Ou seja, ela é constante.
+
+Exemplo:
+
+const nome = "Carlos";
+nome = "Joana"; // Erro! Não podemos mudar o valor de uma constante
+const é útil quando você sabe que o valor não vai mudar, como quando define constantes em matemática (por exemplo, a constante PI para cálculos com círculos).
+
+Exemplo:
+
+const PI = 3.14159;
+console.log(PI); // 3.14159
+Importante: Mesmo sendo constante, se const for usado para criar um objeto (como um array ou um objeto literal), as propriedades ou elementos do objeto ainda podem ser modificados. O que não pode mudar é a referência ao objeto em si.
+
+Exemplo:
+
+const numeros = [1, 2, 3];
+numeros.push(4); // Isso funciona
+console.log(numeros); // [1, 2, 3, 4]
+ 
+// Mas tentar fazer:
+numeros = [5, 6]; // Erro!
+Palavras Reservadas em JavaScript para Nomes de Variáveis
+Quando você escolhe um nome para uma variável, não pode usar certas palavras que têm um significado especial em JavaScript. Essas palavras são chamadas de palavras reservadas, porque o JavaScript as usa para fazer coisas específicas no código.
+
+Por exemplo, palavras como if, else, return, e function são reservadas. Se você tentar usá-las como nome de variável, vai causar um erro no código.
+
+Exemplo de Palavras Reservadas:
+
+if
+
+else
+
+return
+
+function
+
+class
+
+let
+
+const
+
+Exemplo de uso incorreto:
+let if = 10; // Erro! "if" é uma palavra reservada
+Resumo e Dicas Práticas
+Sempre que possível, prefira usar let e const em vez de var. Isso evitará problemas com escopo.
+
+Use let quando o valor da variável pode mudar durante o código.
+
+Use const para variáveis cujo valor será fixo, tornando o código mais claro e menos propenso a erros.
+
+Evite usar palavras reservadas como nomes de variáveis, e escolha nomes que façam sentido, como idade, nome, produto, etc.
+
+Exemplo prático do dia a dia
+Imagine que você está criando uma aplicação de lista de compras. Você pode usar const para definir os itens que sempre estarão na lista (como "pão" ou "leite") e let para controlar as quantidades, que podem mudar de acordo com a necessidade.
+
+const itensFixos = ["pão", "leite"];
+let quantidadeDePao = 2;
+let quantidadeDeLeite = 1;
+Dessa forma, os itens fixos não podem ser alterados, mas a quantidade pode ser ajustada conforme necessário.
